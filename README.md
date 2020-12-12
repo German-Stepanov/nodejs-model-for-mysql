@@ -212,16 +212,16 @@ mdl_users.update(data, function (count_rows) {});
 var data = {
 	fields 	: ['user_id', 'user_name', 'user_family'],  //[] - все поля строки
 	join 	: {
-		'cities' 	: 'users.user_city_id = cities.city_id',
-		'statuses' 	: 'users.user_status_id = statuses.status_id',
+		cities 		: 'users.user_city_id = cities.city_id',
+		statuses 	: 'users.user_status_id = statuses.status_id',
 	},
 	where	: {
 		status_name	: 'Рабочий',
-		'user_age >': 45
+		'user_age >'	: 45,
 	}, 
 	like	: {
 		user_family	: '%Ива',
-		user_about	: '%женат%'
+		user_about	: '%женат%',
 	}, 
 	in		: {
 		user_company_id : [1,2,3]
@@ -229,7 +229,7 @@ var data = {
 	group 	: ['user_family', 'user_name'],
 	order   : {
 		user_family 	: 'asc',
-		user_age 	: 'desc'
+		user_age 	: 'desc',
 	},
 	limit	: 10,
 	offset	: 5,
@@ -260,8 +260,8 @@ mdl_users.get(0, function(row) {})
 ```JS
 //Обновляет в таблице(id>0) или добавляет в таблицу(id=0) одну строку
 var data = {
-	user_name 	: 'Иван'
-	user_family 	: 'Иванов'
+	user_name 	: 'Иван',
+	user_family 	: 'Иванов',
 }
 mdl_users.set(0, data, function(id) {});
 ```
@@ -270,8 +270,8 @@ mdl_users.set(0, data, function(id) {});
 ```
 ```JS
 var data = {
-	user_name 	: 'Иван'
-	user_family 	: 'Иванов'
+	user_name 	: 'Иван',
+	user_family 	: 'Иванов',
 }
 mdl_users.set(1, data, function(success) {});
 ```
@@ -317,10 +317,10 @@ mdl_users.get_page_rows(0, 10, data, function(total, rows) {})
 ```JS
 var data = {
 	where 	: {
-		'user_age >' : 50
+		'user_age >' 	: 50
 	},
 	like 	: {
-		user_family : 'ман%'
+		user_family 	: 'ман%'
 	},
 }
 mdl_user.get_count_rows(data, function (count_rows) {})
