@@ -1,0 +1,30 @@
+{
+  "name": "model-for-mysql",
+  "version": "1.0.0",
+  "description": "MySQL active-record query builder model for nodejs",
+  "main": "index.js",
+  "dependencies": {
+    "active-record-for-mysql": "^1.0.1",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/German-Stepanov/nodejs-model-for-mysql.git"
+  },
+  "keywords": [
+    "model",
+    "mysql",
+    "active-record",
+    "query-builder"
+  ],
+  "author": "German Stepanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/German-Stepanov/nodejs-model-for-mysql/issues"
+  },
+  "homepage": "https://github.com/German-Stepanov/nodejs-model-for-mysql#readme"
+}
