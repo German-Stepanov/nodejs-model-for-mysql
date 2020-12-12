@@ -1,5 +1,4 @@
 var Model = function () {
-	//наследование и конструктор
 	require('../../index.js').call(this, {
 		host 			: myConfig.db.host,
 		user 			: myConfig.db.user,	
