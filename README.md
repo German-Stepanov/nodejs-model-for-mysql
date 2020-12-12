@@ -37,10 +37,10 @@ get_count_rows		- возвращает общее число строк
 ```JS
 var Model = function () {
 	require('model-for-mysql').call(this, {
-		host 			: 'localhost',	//Адрес БД
-		user 			: 'user123',	//Пользователь
-		password 		: '123',	//Пароль
-		database 		: 'test',	//Название БД	
+		host 		: 'localhost',	//Адрес БД
+		user 		: 'user123',	//Пользователь
+		password 	: '123',	//Пароль
+		database 	: 'test',	//Название БД	
 	});
 	var self = this;
 };
