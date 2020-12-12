@@ -7,9 +7,9 @@ myConfig.data = {
 };
 //Конфигурация базы данных 
 myConfig.db = {
-	host 			: '192.168.1.110',
-	user 			: 'fajans',	
-	password 		: '12345',
+	host 			: 'localhost',
+	user 			: 'user',	
+	password 		: 'password',
 	database 		: 'test',	
 };
 
