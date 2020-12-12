@@ -46,7 +46,7 @@ var Model = function () {
 };
 module.exports = Model;	
 ```
-###	Модель таблицы "users". Файл "mdl_users.js"
+### Модель таблицы "users". Файл "mdl_users.js"
 ```JS
 var Model = function () {
 	require('./myModel').call(this);
@@ -93,7 +93,7 @@ var Model = function () {
 };
 module.exports = Model;
 ```
-###	Модель таблицы "cities". Файл "mdl_cities.js"
+### Модель таблицы "cities". Файл "mdl_cities.js"
 ```JS
 var Model = function () {
 	require('./myModel').call(this);
@@ -121,7 +121,7 @@ var Model = function () {
 };
 module.exports = Model;
 ```
-###	Пример подключения моделей
+### Пример подключения моделей
 ```JS
 var mdl_users = new(require('./models/mdl_users'));
 var mdl_cities = new(require('./models/mdl_cities'));
@@ -236,6 +236,7 @@ var data = {
 };
 mdl_users.select(data, function (rows) {});
 ```
+```
 Возвращает массив строк таблицы или [] в случае неудачи
 ```
 
@@ -249,6 +250,7 @@ mdl_users.get(1, function(row) {})
 ```
 ```JS
 mdl_users.get(0, function(row) {})
+```
 ```
 Возвращает {user_id:0}
 ```
