@@ -1,5 +1,4 @@
 var Model = function () {
-	//наследование и конструктор
 	require('./myModel').call(this);
 	
 	var self = this;
