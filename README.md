@@ -6,125 +6,125 @@
 ```
 ## БАЗОВЫЕ МЕТОДЫ
 ```
-	bind	- отправка готового запроса в БД MySQL, контроль ошибок;
-	create	- создание и отправка запроса создания таблицы
-	drop 	- создание и отправка запроса удаления таблицы
-	insert	- создание и отправка запроса добавления строки в таблицу
-	delete	- создание и отправка запроса удаления строк из таблицы
-	update	- создание и отправка запроса обновления строк в таблице
-	select	- создание и отправка запроса получения строк из таблицы
+bind	- отправка готового запроса в БД MySQL, контроль ошибок;
+create	- создание и отправка запроса создания таблицы
+drop 	- создание и отправка запроса удаления таблицы
+insert	- создание и отправка запроса добавления строки в таблицу
+delete	- создание и отправка запроса удаления строк из таблицы
+update	- создание и отправка запроса обновления строк в таблице
+select	- создание и отправка запроса получения строк из таблицы
 ```
 ## МЕТОДЫ, ПРОИЗВОДНЫЕ ОТ БАЗОВЫХ 
 ```
-	get		- формирует/извлекает строку для формы добавления/обновления
-	set		- добавляет/обновляет строку из формы добавления/обновления
-	get_row_for_id 		- по ID возвращает строку из базы данных
-	delete_row_for_id 	- по ID удаляет строку из базы данных
-	get_page_rows		- возвращает заданную страницу строк
-	get_count_rows		- возвращает общее число строк
+get		- формирует/извлекает строку для формы добавления/обновления
+set		- добавляет/обновляет строку из формы добавления/обновления
+get_row_for_id 		- по ID возвращает строку из базы данных
+delete_row_for_id 	- по ID удаляет строку из базы данных
+get_page_rows		- возвращает заданную страницу строк
+get_count_rows		- возвращает общее число строк
 ```
 ## Пример подключения и использования в папке "_demo"
 ```
-	В директории проекта расположена папка с моделями "models".
-	В этой папке создан файл "myModel.js" c классом базовой модели.
+В директории проекта расположена папка с моделями "models".
+В этой папке создан файл "myModel.js" c классом базовой модели.
 
-	Примечание. Число базовых моделей соответствует числу используемых в проекте баз данных. 
+Примечание. Число базовых моделей соответствует числу используемых в проекте баз данных. 
 
-	В той же папке созданы файлы "mdl_users" и "mdl_cities" - классы моделей таблиц "users" и "cities".
-	Классы моделей наследуют свойства и методы базовой модели.
+В той же папке созданы файлы "mdl_users" и "mdl_cities" - классы моделей таблиц "users" и "cities".
+Классы моделей наследуют свойства и методы базовой модели.
 ```
 ### Базовая модель. Файл "myModel.js"
 ```JS
-	var Model = function () {
-		require('model-for-mysql').call(this, {
-			host 			: 'localhost',	//Адрес БД
-			user 			: 'user123',	//Пользователь
-			password 		: '123',		//Пароль
-			database 		: 'test',		//Название БД	
-		});
-		var self = this;
-	};
-	module.exports = Model;	
+var Model = function () {
+	require('model-for-mysql').call(this, {
+		host 			: 'localhost',	//Адрес БД
+		user 			: 'user123',	//Пользователь
+		password 		: '123',		//Пароль
+		database 		: 'test',		//Название БД	
+	});
+	var self = this;
+};
+module.exports = Model;	
 ```
 ###	Модель таблицы "users". Файл "mdl_users.js"
 ```JS
-	var Model = function () {
-		require('./myModel').call(this);
-		
-		var self = this;
-		
-		this.table		= 'users';			//Название таблицы
-		this.idkey		= 'user_id';		//Ключевое поле
-		this.table_nick	= 'ПОЛЬЗОВАТЕЛИ';	//Ник таблицы
-		this.fields		= 					//Структура полей таблицы
-		[
-			{
-				field	: 'user_id', 
-				label	: 'ID ПОЛЬЗОВАТЕЛЯ', 
-				type	: 'int(11) NOT NULL',
-				auto 	: 1,
-			},
-			{
-				field	: 'user_name', 
-				label	: 'ИМЯ ПОЛЬЗОВАТЕЛЯ', 
-				type	: 'varchar(100) NOT NULL',
-			},
-			{
-				field	: 'user_family', 
-				label	: 'ФАМИЛМЯ ПОЛЬЗОВАТЕЛЯ', 
-				type	: 'varchar(100) NOT NULL',
-			},
-			{
-				field	: 'user_city_id', 
-				label	: 'ID ГОРОДА ПОЛЬЗОВАТЕЛЯ', 
-				type	: 'int(11) NOT NULL',
-			},
-			{
-				field	: 'user_age', 
-				label	: 'ВОЗРАСТ ПОЛЬЗОВАТЕЛЯ', 
-				type	: 'int(11) NOT NULL',
-			},
-			{
-				field	: 'user_image', 
-				label	: 'ИЗОБРАЖЕНИЕ ПОЛЬЗОВАТЕЛЯ', 
-				type	: 'longblob',
-			},
-		];
-	};
-	module.exports = Model;
+var Model = function () {
+	require('./myModel').call(this);
+	
+	var self = this;
+	
+	this.table		= 'users';			//Название таблицы
+	this.idkey		= 'user_id';		//Ключевое поле
+	this.table_nick	= 'ПОЛЬЗОВАТЕЛИ';	//Ник таблицы
+	this.fields		= 					//Структура полей таблицы
+	[
+		{
+			field	: 'user_id', 
+			label	: 'ID ПОЛЬЗОВАТЕЛЯ', 
+			type	: 'int(11) NOT NULL',
+			auto 	: 1,
+		},
+		{
+			field	: 'user_name', 
+			label	: 'ИМЯ ПОЛЬЗОВАТЕЛЯ', 
+			type	: 'varchar(100) NOT NULL',
+		},
+		{
+			field	: 'user_family', 
+			label	: 'ФАМИЛМЯ ПОЛЬЗОВАТЕЛЯ', 
+			type	: 'varchar(100) NOT NULL',
+		},
+		{
+			field	: 'user_city_id', 
+			label	: 'ID ГОРОДА ПОЛЬЗОВАТЕЛЯ', 
+			type	: 'int(11) NOT NULL',
+		},
+		{
+			field	: 'user_age', 
+			label	: 'ВОЗРАСТ ПОЛЬЗОВАТЕЛЯ', 
+			type	: 'int(11) NOT NULL',
+		},
+		{
+			field	: 'user_image', 
+			label	: 'ИЗОБРАЖЕНИЕ ПОЛЬЗОВАТЕЛЯ', 
+			type	: 'longblob',
+		},
+	];
+};
+module.exports = Model;
 ```
 ###	Модель таблицы "cities". Файл "mdl_cities.js"
 ```JS
-	var Model = function () {
-		require('./myModel').call(this);
-		
-		var self = this;
-		
-		this.table		= 'cities';		//Название таблицы
-		this.idkey		= 'city_id';	//Ключевое поле
-		this.table_nick	= 'ГОРОДА';		//Ник таблицы
-		this.fields		=				//Структура полей таблицы	
-		[
-			{
-				field	: 'city_id', 
-				label	: 'ID ГОРОДА', 
-				type	: 'int(11) NOT NULL',
-				auto 	: 1,
-			},
-			{
-				field	: 'city_name', 
-				label	: 'НАЗВАНИЕ ГОРОДА', 
-				type	: 'varchar(100) NOT NULL',
-			},
-		];
-		
-	};
-	module.exports = Model;
+var Model = function () {
+	require('./myModel').call(this);
+	
+	var self = this;
+	
+	this.table		= 'cities';		//Название таблицы
+	this.idkey		= 'city_id';	//Ключевое поле
+	this.table_nick	= 'ГОРОДА';		//Ник таблицы
+	this.fields		=				//Структура полей таблицы	
+	[
+		{
+			field	: 'city_id', 
+			label	: 'ID ГОРОДА', 
+			type	: 'int(11) NOT NULL',
+			auto 	: 1,
+		},
+		{
+			field	: 'city_name', 
+			label	: 'НАЗВАНИЕ ГОРОДА', 
+			type	: 'varchar(100) NOT NULL',
+		},
+	];
+	
+};
+module.exports = Model;
 ```
 ###	Пример подключения моделей
 ```JS
-	var mdl_users = new(require('./models/mdl_users'));
-	var mdl_cities = new(require('./models/mdl_cities'));
+var mdl_users = new(require('./models/mdl_users'));
+var mdl_cities = new(require('./models/mdl_cities'));
 ```
 ###	Примеры выполнения запросов
 ```JS
@@ -272,17 +272,17 @@ mdl_user.get_count_rows(data, function (count_rows) {})
 ```
 ## Тестирование
 ```
-	Код тестов в файле "_demo/server.js".
-	В файле "_demo/uploads/passport.jpg" расположено небольщое изображение для демонстрации загрузки двоичного файла
+Код тестов в файле "_demo/server.js".
+В файле "_demo/uploads/passport.jpg" расположено небольщое изображение для демонстрации загрузки двоичного файла
 
-	Для тестирования требуется создать пустую (без таблиц) БД, например "test".
-	В файле "_demo/server.js" указать параметры доступа к БД.
+Для тестирования требуется создать пустую (без таблиц) БД, например "test".
+В файле "_demo/server.js" указать параметры доступа к БД.
 ```
 ### Запуск тестов
 ```
-	node server
+node server
 ```
 ### Результат
 ```
-	http://localhost:2020
+http://localhost:2020
 ```
