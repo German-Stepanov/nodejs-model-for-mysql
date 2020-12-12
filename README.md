@@ -39,8 +39,8 @@ var Model = function () {
 	require('model-for-mysql').call(this, {
 		host 			: 'localhost',	//Адрес БД
 		user 			: 'user123',	//Пользователь
-		password 		: '123',		//Пароль
-		database 		: 'test',		//Название БД	
+		password 		: '123',	//Пароль
+		database 		: 'test',	//Название БД	
 	});
 	var self = this;
 };
@@ -53,10 +53,10 @@ var Model = function () {
 	
 	var self = this;
 	
-	this.table		= 'users';			//Название таблицы
-	this.idkey		= 'user_id';		//Ключевое поле
+	this.table	= 'users';		//Название таблицы
+	this.idkey	= 'user_id';		//Ключевое поле
 	this.table_nick	= 'ПОЛЬЗОВАТЕЛИ';	//Ник таблицы
-	this.fields		= 					//Структура полей таблицы
+	this.fields	=			//Структура полей таблицы
 	[
 		{
 			field	: 'user_id', 
@@ -100,10 +100,10 @@ var Model = function () {
 	
 	var self = this;
 	
-	this.table		= 'cities';		//Название таблицы
+	this.table		= 'cities';	//Название таблицы
 	this.idkey		= 'city_id';	//Ключевое поле
-	this.table_nick	= 'ГОРОДА';		//Ник таблицы
-	this.fields		=				//Структура полей таблицы	
+	this.table_nick		= 'ГОРОДА';	//Ник таблицы
+	this.fields		= 		//Структура полей таблицы	
 	[
 		{
 			field	: 'city_id', 
@@ -150,9 +150,9 @@ mdl_users.drop(function(success) {});
 ```JS
 var data = {
 	data 	: {
-		user_name		: 'Александр',
-		user_family		: 'Иванов',
-		user_age		: 40,
+		user_name	: 'Александр',
+		user_family	: 'Иванов',
+		user_age	: 40,
 		//Добавление бинарного файла
 		user_photo  	: require('fs').readFileSync(filename),
 	}
@@ -172,7 +172,7 @@ var data = {
 		'user_age >'	: 25
 	}, 
 	in		: {
-		user_id : [1,2,3]
+		user_id 	: [1,2,3]
 	},
 };
 mdl_users.delete(data, function (count_rows) {})
@@ -185,17 +185,17 @@ mdl_users.delete(data, function (count_rows) {})
 ### ОБНОВЛЕНИЕ СТРОК
 ```JS
 var data = {
-	in		: {
-		user_age 		: [40,45,50]
+	in	: {
+		user_age 	: [40,45,50]
 	}, 
 	like 	: {
-		user_family		: '%Ив'
+		user_family	: '%Ив'
 	},
 	where	: {
-		user_status		: 'Новичок',
+		user_status	: 'Новичок',
 	}, 
-	data : {
-		user_status		: 'Старина',
+	data 	: {
+		user_status	: 'Старина',
 		//Данные бинарного файла
 		user_photo  	: require('fs').readFileSync(filename),
 	},
@@ -212,8 +212,8 @@ mdl_users.update(data, function (count_rows) {});
 var data = {
 	fields 	: ['user_id', 'user_name', 'user_family'],  //[] - все поля строки
 	join 	: {
-		'cities' 		: 'users.user_city_id = cities.city_id',
-		'statuses' 		: 'users.user_status_id = statuses.status_id',
+		'cities' 	: 'users.user_city_id = cities.city_id',
+		'statuses' 	: 'users.user_status_id = statuses.status_id',
 	},
 	where	: {
 		status_name	: 'Рабочий',
@@ -228,7 +228,7 @@ var data = {
 	}, 
 	group 	: ['user_family', 'user_name'],
 	order   : {
-		user_family : 'asc',
+		user_family 	: 'asc',
 		user_age 	: 'desc'
 	},
 	limit	: 10,
@@ -259,7 +259,7 @@ mdl_users.get(0, function(row) {})
 //Обновляет в таблице(id>0) или добавляет в таблицу(id=0) одну строку
 var data = {
 	user_name 	: 'Иван'
-	user_family : 'Иванов'
+	user_family 	: 'Иванов'
 }
 mdl_users.set(0, data, function(id) {});
 ```
@@ -269,7 +269,7 @@ mdl_users.set(0, data, function(id) {});
 ```JS
 var data = {
 	user_name 	: 'Иван'
-	user_family : 'Иванов'
+	user_family 	: 'Иванов'
 }
 mdl_users.set(1, data, function(success) {});
 ```
@@ -299,8 +299,8 @@ mdl_users.delete_row_for_id(10, function(success) {})
 ### ПОЛУЧЕНИЕ СТРАНИЦЫ СТРОК ПО НОМЕРУ СТРАНИЦЫ (С НУЛЯ) И ЧИСЛУ СТРОК НА СТРАНИЦУ
 ```JS
 var data = {
-	fields : ['user_family', 'user_name'],
-	where : {
+	fields 	: ['user_family', 'user_name'],
+	where 	: {
 		'user_age >' : 30
 	}
 };
@@ -314,10 +314,10 @@ mdl_users.get_page_rows(0, 10, data, function(total, rows) {})
 ### ВОЗВРАЩАЕТ ОБЩЕЕ ЧИСЛО СТРОК НА УСЛОВИЯХ
 ```JS
 var data = {
-	where : {
+	where 	: {
 		'user_age >' : 50
 	},
-	like : {
+	like 	: {
 		user_family : 'ман%'
 	},
 }
